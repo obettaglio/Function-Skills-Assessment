@@ -228,6 +228,20 @@ calculate_price(126, "MA")
 #>>> outer("Balloonicorn")
 #('Balloonicorn', 'BalloonicornBalloonicornBalloonicorn')
 
+def print_orig_and_multiple(word):
+    """Prints original word followed by multiple --
+       multiple is found by calling inner function"""
+
+    def multiply_by_three(word):
+        """Creates a string of a word printed three times"""
+
+        return "{}{}{}".format(word, word, word)
+
+    multiple = multiply_by_three(word)
+    return (word, multiple)
+
+print_orig_and_multiple("Balloonicorn")
+
 
 ###############################################################################
 

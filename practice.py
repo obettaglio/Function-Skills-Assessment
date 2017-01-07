@@ -100,13 +100,13 @@ print_product(3, 5)
 def repeat_string(item, n):
     i = 0
     while n > i:
-        #print item         <- prints items in separate lines
-        #print item,        <- prints with spaces in between items
-        print item,
+        #print item             <- prints items in separate lines
+        #print item,            <- prints with spaces in between items
+        import sys
+        sys.stdout.write(item)  #searched for solution
         i = i + 1
     return
 
-#UNSOLVED: prints n items in separate lines, not same line
 repeat_string("Balloonicorn", 3)
 
 
@@ -181,12 +181,12 @@ total_meal_price(30, .3)
 def sign_and_parity(num):
     sign_parity_list = []
     if num % 2 == 0:
+        #didn't work (can't assign index out of range):
+        #sign_parity_list[0] = "Even"
         sign_parity_list.append("Even")
     elif num % 2 != 0:
         sign_parity_list.append("Odd")
     if num < 0:
-        #can't assign index out of range:
-        #sign_parity_list[1] = "Negative"
         sign_parity_list.append("Negative")
     elif num > 0:
         sign_parity_list.append("Positive")
