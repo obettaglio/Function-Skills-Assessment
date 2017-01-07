@@ -59,8 +59,31 @@ included in the doctest.
 #    (a) Write a function that takes a town name as a string and evaluates to
 #        `True` if it is your hometown, and `False` otherwise.
 
+def is_hometown(town_name):
+    """Determines if town is hometown"""
+
+    if town_name == "San Jose":
+        return True
+    else:
+        return False
+
+is_hometown("San Jose")
+is_hometown("Chicago")
+
+
 #    (b) Write a function that takes a first and last name as arguments and
 #        returns the concatenation of the two names in one string.
+
+def full_name(first_name, last_name):
+    """Concatenates first name and last name into string"""
+
+    return "{} {}".format(
+        first_name,
+        last_name
+        )
+
+full_name("Olivia", "Bettaglio")
+
 
 #    (c) Write a function that takes a home town, a first name, and a last name
 #        as arguments, calls both functions from part (a) and (b) and prints
@@ -68,6 +91,20 @@ included in the doctest.
 #        here', where are you from?" depending on what the function from part
 #        (a) evaluates to.
 
+def introduce(hometown, first_name, last_name):
+    """Greets person by full name; message dependent on whether person
+       is from hometown"""
+
+    name = full_name(first_name, last_name)
+    if is_hometown(hometown) == True:
+        return "Hi, {}, we're from the same place!".format(name)
+        #note: directions call for comma after Hi
+    else:
+        return "Hi {}, where are you from?".format(name)
+        #note: directions call for no comma after Hi
+
+introduce("San Jose", "Sofie", "Bettaglio")
+introduce("Matsudo", "Serena", "Marie")
 
 
 ###############################################################################
@@ -82,7 +119,14 @@ included in the doctest.
 def is_berry(fruit):
     """Determines if fruit is a berry"""
 
-    pass
+    berry_list = ["strawberry", "cherry", "blackberry"]
+    if fruit in berry_list:
+        return True
+    else:
+        return False
+
+is_berry("blackberry")
+is_berry("durian")
 
 
 # (b) Write another function, shipping_cost(), which calculates shipping cost
@@ -93,7 +137,13 @@ def is_berry(fruit):
 def shipping_cost(fruit):
     """Calculates shipping cost of fruit"""
 
-    pass
+    if is_berry(fruit) == True:
+        return 0
+    else:
+        return 5
+
+shipping_cost("blackberry")
+shipping_cost("durian")
 
 
 # 2. Make a function that takes in a number and a list of numbers. It should
@@ -104,8 +154,10 @@ def append_to_list(lst, num):
     """Creates a new list consisting of the old list with the given number
        added to the end."""
 
-    pass
+    lst.append(num)         #should function not rely on append method?
+    return lst
 
+append_to_list([3, 5, 7], 2)
 
 
 # 3. Write a function calculate_price to calculate an item's total cost by
@@ -124,9 +176,29 @@ def append_to_list(lst, num):
 #    Your function should return the total cost of the item, including tax and
 #    fees.
 
-def calculate_price(FILL_ME_IN):
+def calculate_price(price, state, tax = 0.05):
+    """Calculates total price of an item depending on state taxes and fees"""
 
-    pass
+    taxed_price = price + (price * tax)
+    if state == "CA":
+        total_price = round(taxed_price + (taxed_price * 0.03))
+    elif state == "PA":
+        total_price = taxed_price + 2.00
+    elif state == "MA":
+        if price < 100:
+            total_price = taxed_price + 1
+        else:
+            total_price = taxed_price + 3
+    else:
+        total_price = taxed_price
+    return total_price
+
+calculate_price(25, "CA")
+calculate_price(400, "NM")
+calculate_price(150, "OR", 0)
+calculate_price(60, "PA")
+calculate_price(38, "MA")
+calculate_price(126, "MA")
 
 
 ###############################################################################
