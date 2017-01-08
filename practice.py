@@ -70,6 +70,7 @@ PART TWO:
 
 # 1. Write a function called 'hello_world' that does not take any arguments and
 #    prints "Hello World".
+
 def hello_world():
     print "Hello World"
 
